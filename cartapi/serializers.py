@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from order.models import Meal
+from .models import OrderItem
 
-class meal_serial (serializers.ModelSerializer):
-    
+class order_serial (serializers.ModelSerializer):
+    mea = serializers.ReadOnlyField(source='mea.name')
     class Meta:
-        model = Meal
-        fields = ['id','category','name','price','available','image']
+        model = OrderItem
+        fields = ['id','mea','order','quantity','get_total']
